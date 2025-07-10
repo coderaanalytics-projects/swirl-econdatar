@@ -1,0 +1,17 @@
+- Class: meta
+  Course: econdatar
+  Lesson: Installation
+  Author: Aidan Horn
+  Type: Standard
+  Organization: Codera Analytics
+  Version: 2.4.5
+
+- Class: text
+  Output: Welcome to Codera Analytics' Swirl course!
+
+- Class: exact_question
+  Output: Please complete the "R_Programming" Swirl course before starting this course. Type main() to go back to the main menu, in order to do that course, or 1 to continue.
+  CorrectAnswer: 1
+  AnswerTests: omnitest(correctVal="1")
+  Hint: Type main() or 1
+
