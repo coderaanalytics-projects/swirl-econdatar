@@ -3,7 +3,3 @@
       # the user's working directory and thus be accessible to them
       # throughout the lesson.
 
-suppressMessages({
-if (!("R_Programming" %in% dir(swirl_courses_dir()))) install_course("R_Programming")
-if (!("Exploratory_Data_Analysis" %in% dir(swirl_courses_dir()))) install_course("Exploratory_Data_Analysis")
-})

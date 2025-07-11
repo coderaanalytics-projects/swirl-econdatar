@@ -1,0 +1,108 @@
+- Class: meta
+  Course: econdatar
+  Lesson: Extract Data
+  Author: Aidan Horn
+  Type: Standard
+  Organization: Codera Analytics
+  Version: 2.4.5
+
+- Class: text
+  Output: Please see the instructions at https://econdata.co.za/user-guide/installation/#r-package
+    about how to get your API key.
+
+
+- Class: cmd_question
+  Output: |
+    Let's try reading data from EconData in R! Please type or copy & paste the following.
+
+    bus_cyc <- read_dataset("BUSINESS_CYCLES", tidy=TRUE, wide=FALSE, combine=TRUE) %>% as_tibble()
+
+    Please look out for a new window that pops up (with a feather icon), where you can paste your API key.
+
+    You can find our user guide about this dataset at https://econdata.co.za/user-guide/sarb/indicators/#BUSINESS_CYCLES
+  CorrectAnswer: bus_cyc <- read_dataset("BUSINESS_CYCLES", tidy=TRUE, wide=FALSE, combine=TRUE)
+  AnswerTests: omnitest(correctExpr='bus_cyc <- read_dataset("BUSINESS_CYCLES", tidy=TRUE, wide=FALSE, combine=TRUE) %>% as_tibble()')
+  Hint: |
+    Please type the following:
+
+    bus_cyc <- read_dataset("BUSINESS_CYCLES", tidy=TRUE, wide=FALSE, combine=TRUE) %>% as_tibble()
+
+
+- Class: text
+  Output: This dataset is sourced from the South African Reserve Bank's API, and gives
+    business cycle indicators such as the leading indicator, consumer and producer price indices,
+    and labour market indicators.
+
+
+- Class: cmd_question
+  Output: Let's look at the format with which we downloaded these data. We specified wide=FALSE,
+    so bus_cyc is a long table. More information about the read_dataset parameters can be
+    explored by typing ?read_dataset . Please open the help file for this function now,
+    by typing ?read_dataset
+  CorrectAnswer: ?read_dataset
+  AnswerTests: omnitest(correctExpr='?read_dataset')
+  Hint: Please open the help documentation, by typing "?read_dataset".
+
+- Class: cmd_question
+  Output: |
+    The help file explains that you could have specified
+
+    wide=FALSE, compact=TRUE
+
+    for two separate, relational, tables, in a list. The one would be a data table, and
+    the second a metadata table, which can be joined on the series_key. Alternatively,
+
+    wide=TRUE
+
+    is the default, which gives each variable as a separate column, using the series keys
+    as the column names. More detail is given in this blog post: https://econdata.co.za/major-changes-with-econdatar-version-4/
+
+    To see the column names in the long format that we've downloaded the data in, combined
+    with the metadata, please type: names(bus_cyc)
+  CorrectAnswer: names(bus_cyc)
+  AnswerTests: omnitest(correctExpr='names(bus_cyc)')
+  Hint: Please view the column names of the bus_cyc table, by typing "names(bus_cyc)".
+
+- Class: text
+  Output: |
+    Note that the most important columns are "obs_value" (the numerical values),
+    "time_period" (the date, where the first day of the period is used), and "series_name"
+    (the mnemonic name of the series).
+
+- Class: cmd_question
+  Output: |
+    Let's make a basic graph with the data, using ggplot! Please run
+
+    library(ggplot2)
+
+    We will look at our recommended way to save an image, so please run "?ggsave" after that.
+  CorrectAnswer: ?ggsave
+  AnswerTests: omnitest(correctExpr='?ggsave')
+  Hint:
+
+- Class: cmd_question
+  Output: |
+    Now that you've seen the parameters that get used in the ggsave function
+    (a function that saves graph images to the hard drive), please type or copy & paste the following lines of code,
+    to create a simple graph from our data.
+
+    ggplot_bus_cyc <- ggplot(bus_cyc, aes(x=time_period, y=obs_value, color=series_name)) +
+        geom_line()
+
+    ggsave(
+      filename = "bus_cyc.jpg",
+      plot = ggplot_bus_cyc,
+      width = 20,
+      height = 15,
+      units = "cm"
+    )
+
+    Type "1" once you have done that.
+  CorrectAnswer: 1
+  AnswerTests: omnitest(correctExpr='1')
+
+- Class: figure
+  Output: I will show you what the image should look like now. Congratulations on finishing this lesson!
+  Figure: bus_cyc.R
+  FigureType: new
+

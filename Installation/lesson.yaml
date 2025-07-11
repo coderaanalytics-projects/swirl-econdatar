@@ -1,0 +1,64 @@
+- Class: meta
+  Course: econdatar
+  Lesson: Installation
+  Author: Aidan Horn
+  Type: Standard
+  Organization: Codera Analytics
+  Version: 2.4.5
+
+- Class: text
+  Output: Welcome to Codera Analytics' Swirl course!
+
+- Class: exact_question
+  Output: |
+    Please complete the "R_Programming" Swirl course before starting this course.
+    You can install this course with the following line:
+
+    install_course("R_Programming")
+
+    Please run that line, then type main() to go back to the main menu, in order to do that course.
+    Or, type "1" to continue.
+  CorrectAnswer: 1
+  AnswerTests: omnitest(correctVal="1")
+  Hint: Please install the "R Programming" course with
+
+    install_course("R_Programming")
+
+    then type main(), or alternatively type "1" to continue.
+
+- Class: cmd_question
+  Output: |
+    This course teaches you how to use the econdatar package. If you have not
+    heard of EconData before, please visit https://econdata.co.za/category/introduction/
+
+    If you have not yet already installed this package, maintained by Codera, please run the following two lines.
+    You only need to update the recommended packages if you have time to spare.
+
+    library(remotes)
+    install_github("coderaanalytics/econdatar")
+  CorrectAnswer: install_github("coderaanalytics/econdatar")
+  AnswerTests: omnitest(correctExpr='install_github("coderaanalytics/econdatar")')
+  Hint: Please type library(remotes) then on a new line
+
+    install_github("coderaanalytics/econdatar")
+
+- Class: cmd_question
+  Output: Before using any of the functions, you'll need to run the library(econdatar) command. Go ahead and do that.
+  CorrectAnswer: library(econdatar)
+  AnswerTests: omnitest(correctExpr='library(econdatar)')
+  Hint: "Please type the following, and press enter: library(econdatar)"
+
+- Class: cmd_question
+  Output: |
+    Great! Usually, you will load all your packages at the top of your script,
+    so that other people who use your script will know at the start which packages
+    they must first install. Please make sure that the "Exploratory Data Analysis"
+    course is installed. If it is not, please run the following line:
+
+    install_course("Exploratory_Data_Analysis")
+
+    We recommend that you do that course before proceeding to the next lesson in this course ("Extract Data").
+    If you have already installed that course, please type "1" to finish this lesson.
+  CorrectAnswer: 1
+  AnswerTests: omnitest(correctVal='1')
+
