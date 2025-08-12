@@ -7,7 +7,7 @@ Please run the following lines in R, to install this course:
 ```r
 install.packages("swirl")
 library(swirl)
-install_course_github("coderaanalytics", "swirl-econdatar")
+install_course_github("coderaanalytics-projects", "swirl-econdatar")
 ```
 
 then run the command `swirl()` and select the course.
